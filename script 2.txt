@@ -1,0 +1,37 @@
+> create database mahasiswa;
+> use mahasiswa;
+> show databases;
+> create table biodata
+	-> (nim varchar(15) primary key,
+	-> nama varchar(25) not null,
+	-> alamat_jalan varchar(25) not null,
+	-> kota varchar(10) not null,
+	-> kode_pos varchar(10) not null,
+	-> no_hp varchar(15) not null,
+	-> jenis_kelamin varchar(10) not null,
+	-> kode_dosen varchar(20) not null);
+> ALTER table biodata
+	-> add tanggal_lahir date after jenis_kelamin;
+> insert into biodata
+	-> (nim, nama, alamat_jalan, kota, kode_pos, no_hp, jenis_kelamin, tanggal_lahir, kode_dosen)
+	-> values
+	-> ("11223344", "ari santoso","","bekasi","","","laki-laki","1998-10-12",""),
+	-> ("11223345", "ario talib","","cikarang","","","laki-laki","1999-11-16",""),
+	-> ("11223346", "dina marlina","","karawang","","","perempuan","1997-12-01",""),
+	-> ("11223347", "lisa ayu","","bekasi","","","perempuan","1996-01-02",""),
+	-> ("11223348", "tiara wahidah","","bekasi","","","perempuan","1980-02-05",""),
+	-> ("11223349", "anton sinaga","","cikarang","","","laki-laki","1988-03-10","");
+> update biodata set tanggal_lahir = "1970-08-31" where nim = "11223344";
+> select*from biodata where nim = "11223344";
+> delete from biodata where nim = "11223346";
+> select * from biodata
+	-> where tanggal_lahir >= "1996-1-2";
+> select nama, kota, jenis_kelamin from biodata
+	-> where kota ="bekasi" and jenis_kelamin = "perempuan";
+> select * from biodata
+	-> where kota = "bekasi" and jenis_kelamin = "laki-laki"
+	-> or tanggal_lahir <= "1997" and jenis_kelamin = "perempuan"
+	-> order by nama;fro
+> select nama, alamat_jalan from biodata;
+> select * from biodata
+    -> order by nama asc;
